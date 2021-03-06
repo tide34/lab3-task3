@@ -10,7 +10,7 @@ jobs:
           name: Build application Docker image
           command: |
             docker build -t app:$CIRCLE_SHA1 .
-            echo var=$variable1
+            echo var=${CONTEXT_ENV_variable1}
 
 workflows:
   version: 2
