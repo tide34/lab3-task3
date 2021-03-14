@@ -1,21 +1,22 @@
 version: 2.1
 
 orbs:
+  docker: circleci/docker@1.5.0
   myCustomOrb:
-    executors:
-      ubuntu_vm:
-        machine: 
-          image: ubuntu-2004:202101-01
-    commands:
-      cmdaa:
-        steps:
-          - run: docker build -t app:$CIRCLE_SHA1 .
-    jobs:
-      build:
-        executor: ubuntu_vm
-        steps:
-         - checkout
-         - cmdaa
+      executors:
+        ubuntu_vm:
+          machine: 
+            image: ubuntu-2004:202101-01
+      commands:
+        cmdaa:
+          steps:
+            - run: docker build -t app:$CIRCLE_SHA1 .
+      jobs:
+        build:
+          executor: ubuntu_vm
+          steps:
+            - checkout
+            - cmdaa
 
 
 workflows:
