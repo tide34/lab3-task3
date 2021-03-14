@@ -27,6 +27,6 @@ workflows:
           filters:
             branches:
              only: main
-      - docker/publish:
-          deploy: false
-          image: app:$CIRCLE_SHA1
+      - docker/build:
+          name: app
+          tag: $CIRCLE_SHA1
